@@ -80,10 +80,9 @@ class UserHandlers {
         "select template from user_types where id = $1",
         [type]
       );
-
       const user_type = JSON.stringify(
         rows[0].template.map((f) => {
-          if (f.group == "data_for_access") {
+          if (f.id == "data_for_access") {
             f.items[0].value = username;
             f.items[1].value = password;
           }

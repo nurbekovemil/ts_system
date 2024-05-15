@@ -66,7 +66,7 @@ export default {
               value: "",
               type: "input",
               valid: {
-                required: true,
+                required: false,
               },
               col: "4",
             },
@@ -106,7 +106,7 @@ export default {
               value: "",
               type: "input",
               valid: {
-                required: true,
+                required: false,
               },
               col: "4",
             },

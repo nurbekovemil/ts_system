@@ -163,6 +163,14 @@
                 <td>{{ validPrice(deal.cost) }} / {{ deal.currency_title }}</td>
               </tr>
               <tr>
+                <td>НДС</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>НCП</td>
+                <td></td>
+              </tr>
+              <tr>
                 <td>Сроки оплаты</td>
                 <td>{{ deal.payment_date }}</td>
               </tr>
