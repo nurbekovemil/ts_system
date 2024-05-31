@@ -27,14 +27,15 @@ class ReportHandlers {
         inner join order_weights o_w on o_w.id = o.weight
         inner join order_currencies o_c on o_c.id = o.currency 
         where d.status in(5,2,6)
-        ${date_from ? ` and d.created_at >= '${date_from}'` : ""}
-        ${date_to ? ` and d.created_at <= '${date_to}'` : ""}
+        ${date_from ? ` and d.created_at >= '${date_from} 00:00:00'` : ""}
+        ${date_to ? ` and d.created_at <= '${date_to} 23:59:59'` : ""}
         ${
           search_name.trim() != "" && is_members
             ? ` and u_f.username like '%${search_name}%' or u_t.username like '%${search_name}%'`
             : ""
         }
-      `;
+        order by d.created_at desc
+        `;
       const { rows } = await client.query(queryString);
       return rows;
     } catch (error) {
@@ -74,11 +75,11 @@ class ReportHandlers {
       where d.status in (5, 2, 6) and u.role = 2 
         ${
           date_from && date_from == date_to
-            ? ` and d.created_at >='${date_from}' `
+            ? ` and d.created_at >='${date_from} 00:00:00' `
             : date_from
-            ? ` and d.created_at >= '${date_from}' `
+            ? ` and d.created_at >= '${date_from} 00:00:00' `
             : date_to
-            ? ` and d.created_at <= '${date_to}' `
+            ? ` and d.created_at <= '${date_to} 23:59:59' `
             : " "
         }
       group by u.id

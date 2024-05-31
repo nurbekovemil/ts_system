@@ -137,15 +137,16 @@ export default {
   methods: {
     ...mapActions("report", ["GET_COMMISSION_REPORT"]),
     dealResults(field) {
-      console.log(this.commission_reports);
       let total = this.commission_reports.reduce(
-        (counter, deal) => (counter += parseInt(deal[field])),
+        (counter, deal) => (counter += parseFloat(deal[field])),
         0
       );
-      return this.validPrice(total);
+      return this.validPrice(total.toFixed(2));
     },
     validPrice(number) {
-      return new Intl.NumberFormat("ru", { style: "decimal" }).format(number);
+      return new Intl.NumberFormat("ru", { style: "decimal",  
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2, }).format(number);
     },
     getReportByDate() {
       this.GET_COMMISSION_REPORT({

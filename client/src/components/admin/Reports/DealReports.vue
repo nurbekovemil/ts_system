@@ -165,7 +165,8 @@ export default {
       });
     },
     validPrice(number) {
-      return new Intl.NumberFormat("ru", { style: "decimal" }).format(number);
+      return new Intl.NumberFormat("ru", { style: "decimal",  minimumFractionDigits: 2, 
+  maximumFractionDigits: 2  }).format(number);
     },
     dealResults(field) {
       let total = this.deals.reduce(

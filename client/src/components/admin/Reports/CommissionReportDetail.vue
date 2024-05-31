@@ -90,8 +90,8 @@
               </tr>
             </thead>
 
-            <template v-if="commission_reports_detail.length > 0">
-              <template v-for="report in commission_reports_detail">
+            <template v-if="sortedCommissionReports.length > 0">
+              <template v-for="report in sortedCommissionReports">
                 <tbody :key="report.id">
                   <tr class="brdr">
                     <td colspan="6" style="background: lightgrey; height: 30px">
@@ -104,7 +104,7 @@
                     :key="subrep.id + '' + index"
                   >
                     <td>{{ subrep.created_at }}</td>
-                    <td>{{ validPrice(subrep.deal_number) }}</td>
+                    <td>{{ subrep.deal_number }}</td>
                     <td>{{ validPrice(subrep.price) }}</td>
                     <td>{{ subrep.title }}</td>
                     <td>{{ validPrice(subrep.amount) }}</td>
@@ -192,6 +192,16 @@ export default {
   },
   computed: {
     ...mapState("report", ["commission_reports_detail"]),
+    sortedCommissionReports() {
+    return this.commission_reports_detail.map(report => ({
+      ...report,
+      deals: report.deals.sort((a, b) => {
+        const dateA = new Date(a.created_at.split('.').reverse().join('-'));
+        const dateB = new Date(b.created_at.split('.').reverse().join('-'));
+        return dateB - dateA;
+      }),
+    }));
+  },
   },
   mounted() {
     this.GET_COMMISSION_REPORT_DETAIL({

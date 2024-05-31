@@ -394,7 +394,7 @@ class DealHandlers {
   async getTrageList({ date }) {
     const client = await this.db.connect();
     try {
-      const { rows } = await client.query(`
+      const queryString = `
       select 
       d.*, 
       to_char(d.created_at, 'DD.MM.YYYY') as created_at,
@@ -417,12 +417,12 @@ class DealHandlers {
       inner join orders o_t on o_t.id = d.order_to
       inner join order_weights as ow on o_f.weight = ow.id 
       inner join order_currencies on order_currencies.id = o_f.currency
-      where d.status in (2,5,6) ${
-        date != "all"
-          ? `and d.created_at >= NOW() - INTERVAL '${date} day'`
-          : ""
-      } 
-      `);
+      where d.status in (2,5,6) 
+      ${date != 1 && date != "all" ? `and d.created_at >= NOW() - INTERVAL '${date} day'` : ""} 
+      order by d.created_at desc
+      ${date == "1" ? "limit 5" : ""}
+      `;
+      const { rows } = await client.query(queryString);
       return rows;
     } catch (error) {
       return error;
