@@ -77,13 +77,14 @@ class ReportHandlers {
           date_from && date_from == date_to
             ? ` and d.created_at >='${date_from} 00:00:00' `
             : date_from
-            ? ` and d.created_at >= '${date_from} 00:00:00' `
+            ? ` and d.created_at >= '${date_from} 00:00:00' and d.created_at < '${date_to} 23:59:59' `
             : date_to
             ? ` and d.created_at <= '${date_to} 23:59:59' `
             : " "
         }
       group by u.id
       `;
+      console.log(queryString)
       const { rows } = await client.query(queryString);
       return rows;
     } catch (error) {
@@ -117,16 +118,13 @@ class ReportHandlers {
       inner join orders o on o.id = d.order_from
       where d.status in (5, 2, 6) and u.role = 2
         ${
-          date_from && date_from == date_to
-            ? ` and d.created_at >='${date_from}' `
-            : date_from
-            ? ` and d.created_at >= '${date_from}' `
-            : date_to
-            ? ` and d.created_at <= '${date_to}' `
-            : " "
+          date_from && date_from == date_to ? ` and d.created_at >='${date_from}' `
+            : date_from ? ` and d.created_at >= '${date_from}' and d.created_at <= '${date_to}' ` : date_to
+            ? ` and d.created_at <= '${date_to}' ` : " "
         }
       group by u.id
       `;
+      console.log(queryString)
       const { rows } = await client.query(queryString);
       return rows;
     } catch (error) {
