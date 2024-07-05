@@ -110,7 +110,11 @@ class ReportHandlers {
         'amount', o.amount,
         'deal_number', d.deal_number,
         'created_at',  to_char(d.created_at, 'DD.MM.YYYY'),
-        'commission_report', round(((o.cost * 0.05)/100)/ 2, 2)
+        'commission_report', 
+			  CASE
+                WHEN round(((o.cost * 0.05) / 100) / 2, 2) > 50000 THEN 50000
+                ELSE round(((o.cost * 0.05) / 100) / 2, 2)
+        END
       )
       ) as deals
       from users u
