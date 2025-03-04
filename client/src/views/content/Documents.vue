@@ -65,7 +65,7 @@
         </li>
         <li>
           <a
-            href="/documents/Положение_о_расчетно-клиринг_операциях_в_ТСС_24.02.2025.docx"
+            href="/documents/Положение_о_расчетно_клиринг_операциях_в_ТСС_24.02.2025.docx"
             target="_blank"
             class="text-decoration-none"
           >
