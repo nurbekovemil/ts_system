@@ -1,7 +1,7 @@
 <template lang="">
 	<v-card class="mt-5">
 		<v-row>
-			<!-- <v-col cols="12" md="3">
+			<v-col cols="12" md="3">
         <v-select
           v-model="type"
           :items="types"
@@ -13,10 +13,10 @@
           outlined
           hide-details
         ></v-select>
-			</v-col> -->
-      <v-col cols="12" md="3">
+			</v-col>
+      <!-- <v-col cols="12" md="3">
         <h3 class="ml-4">{{ type == 1 ? "Заявки на продажу" : "Заявки на покупку" }}</h3>
-      </v-col>
+      </v-col> -->
 		<v-col cols="12" md="12">
 		<v-simple-table>
 			<template v-slot:default>
@@ -181,13 +181,13 @@
 <script>
 import { mapState, mapActions } from "vuex";
 export default {
-  props: ["status","type"],
+  props: ["status"],
   data: () => ({
-    // type: 1,
-    // types: [
-    //   { title: "Заявка на продажу", type: 1 },
-    //   { title: "Заявка на покупку", type: 2 },
-    // ],
+    type: 1,
+    types: [
+      { title: "Заявка на продажу", type: 1 },
+      { title: "Заявка на покупку", type: 2 },
+    ],
     page: 1,
     limit: 10,
   }),
@@ -236,9 +236,9 @@ export default {
     page(v) {
       this.ALL_ORDER_LIST({ page: v, limit: this.limit });
     },
-    // type() {
-    //   this.getAllOrderList();
-    // },
+    type() {
+      this.getAllOrderList();
+    },
   },
 };
 </script>

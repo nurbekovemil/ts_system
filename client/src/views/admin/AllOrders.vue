@@ -1,7 +1,6 @@
 <template>
    <div>
-         <all type="1"/>
-         <all type="2"/>
+         <all/>
    </div>
 </template>
 
