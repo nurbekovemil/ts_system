@@ -150,7 +150,8 @@
       },
     },
     mounted() {
-      this.USERLIST();
+      // лимит пока 1000
+      this.USERLIST({ limit: 1000, page: 1 });
     },
   };
   </script>
