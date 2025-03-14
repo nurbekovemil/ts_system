@@ -6,13 +6,12 @@ import vuetify from "./plugins/vuetify";
 import i18n from "./i18n";
 import VueHtmlToPaper from "vue-html-to-paper";
 import VueMoment from "vue-moment";
-import CKEditor from "@ckeditor/ckeditor5-vue2";
-
-Vue.use(CKEditor);
 const options = {
   specs: ["fullscreen=yes", "titlebar=yes", "scrollbars=yes"],
   styles: [
     "../public/Print.css",
+    "quill/dist/quill.snow.css",
+    "./assets/vue2-editor.scss",
     "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css",
   ],
   timeout: 500, // default timeout before the print window appears

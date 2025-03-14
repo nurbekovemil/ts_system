@@ -307,6 +307,7 @@ class OrderHandlers {
                inner join order_status as os 
                on os.id = o.status
                where order_type = $1 and user_id = $2
+               order by created_at asc
                limit $3 offset $4
                `,
         [type, user_id, limit, offset]

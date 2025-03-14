@@ -27,3 +27,4 @@ export { default as ExchangePassportView } from "./ExchangePassportView.vue";
 export { default as RegReportView } from "./RegReportView.vue";
 export { default as ShowcaseList } from "./ShowcaseList.vue";
 export { default as ShowcaseView } from "./ShowcaseView.vue";
+export { default as Notification } from "./Notification.vue";

@@ -13,11 +13,16 @@
                 class="px-2"
               >
                 <template v-if="field.type === 'textarea'">
-                  <ckeditor
+                  <vue-editor
+                  v-model="field.value"
+                  :editorToolbar="toolbar"
+                  >
+                  </vue-editor>
+                  <!-- <ckeditor
                     :editor="editor"
                     v-model="field.value"
                     :config="editorConfig"
-                  ></ckeditor>
+                  ></ckeditor> -->
                 </template>
                 <!-- <template v-if="field.type === 'date'">
                   <v-text-field
@@ -120,54 +125,28 @@
 
 <script>
 import { mapState, mapMutations, mapActions } from "vuex";
-import CKEditor from "@ckeditor/ckeditor5-vue2";
-
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { VueEditor } from "vue2-editor";
 
 export default {
   data() {
     return {
+      toolbar: [
+        [{ header: [false, 1, 2, 3, 4, 5, 6] }],
+        ["bold", "italic", "underline", "strike"], // toggled buttons
+        [
+          { align: "" },
+          { align: "center" },
+          { align: "right" },
+          { align: "justify" }
+        ],
+        ["blockquote", "code-block"],
+        [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+        [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+        [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+        ["link"],
+        ["clean"] // remove formatting button
+      ],
       valid: true,
-      editor: ClassicEditor,
-      editorConfig: {
-        toolbar: {
-          items: [
-            "selectAll",
-            "heading",
-            "|",
-            "fontfamily",
-            "fontsize",
-            "|",
-            "alignment",
-            "|",
-            "fontColor",
-            "fontBackgroundColor",
-            "|",
-            "bold",
-            "italic",
-            "strikethrough",
-            "underline",
-            "subscript",
-            "superscript",
-            "|",
-            "outdent",
-            "indent",
-            "|",
-            "bulletedList",
-            "numberedList",
-            "todoList",
-            "|",
-            "code",
-            "codeBlock",
-            "|",
-            "blockQuote",
-            "|",
-            "undo",
-            "redo",
-          ],
-          shouldNotGroupWhenFull: true,
-        },
-      },
       isEmpty: (v) => {
         if (v == null || v == undefined || v == "" || v.trim() == "") {
           return "Поле не может быть пустым.";
@@ -183,7 +162,7 @@ export default {
     ...mapState("blog", ["isAddDialog", "blogTemplate"]),
   },
   components: {
-    ckeditor: CKEditor.component,
+    VueEditor
   },
   methods: {
     ...mapMutations("blog", ["SET_IS_ADD_DIALOG"]),

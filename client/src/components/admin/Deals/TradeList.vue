@@ -1,6 +1,7 @@
 <template>
+  <v-card class="mt-4">
   <v-row>
-    <v-col cols="12" md="3">
+    <v-col cols="12" md="3" class="ml-4">
       <v-select
         v-model="selected"
         :items="periods"
@@ -57,6 +58,7 @@
       </v-simple-table>
     </v-col>
   </v-row>
+</v-card>
 </template>
 <script>
 import { mapState, mapActions } from "vuex";

@@ -2,7 +2,7 @@
   <div>
     <v-tabs v-model="tab">
       <v-tab>Паспорты</v-tab>
-      <v-tab v-if="user.role == 'ADMIN'">Регистрация платежей</v-tab>
+      <!-- <v-tab v-if="user.role == 'ADMIN'">Регистрация платежей</v-tab> -->
     </v-tabs>
     <v-tabs-items v-model="tab">
       <v-tab-item>

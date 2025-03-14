@@ -1,4 +1,5 @@
 <template lang="">
+	<v-card class="mt-5">
 	<v-row>
 		<v-col :cols="isViewUser ? '8' : '12'">
 				<v-simple-table>
@@ -121,6 +122,7 @@
   </div>
 		</v-col>
 	</v-row>
+</v-card>
 </template>
 <script>
 import { mapState, mapActions, mapMutations } from "vuex";

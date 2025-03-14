@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col cols="12" md="3" v-for="(table, i) in table_rows" :key="i">
+    <v-col cols="12" md="4" v-for="(table, i) in table_rows" :key="i">
       <v-card class="pa-3 d-flex justify-space-between">
         <v-sheet
           color="#78C3CC"

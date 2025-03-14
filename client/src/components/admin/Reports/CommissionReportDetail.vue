@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row class="mt-2">
+    <v-row class="mt-2 mx-2">
       <v-col cols="12" md="2">
         <v-text-field
           v-model="date_from"
@@ -104,7 +104,7 @@
                     :key="subrep.id + '' + index"
                   >
                     <td>{{ subrep.created_at }}</td>
-                    <td>{{ subrep.deal_number }}</td>
+                    <td>ТС-{{ subrep.deal_number }}</td>
                     <td>{{ validPrice(subrep.price) }}</td>
                     <td>{{ subrep.title }}</td>
                     <td>{{ validPrice(subrep.amount) }}</td>
@@ -171,9 +171,11 @@ export default {
       return sum;
     },
     totalAmount(lists) {
+      console.log(lists)
       let sum = 0;
       lists.forEach((element) => {
-        sum += element.price * element.amount;
+        // sum += element.price * element.amount;
+        sum += element.amount;
       });
       return sum;
     },

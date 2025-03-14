@@ -32,6 +32,7 @@ import {
   RegReportView,
   ShowcaseList,
   ShowcaseView,
+  Notification,
 } from "../views/admin";
 
 // content pages
@@ -354,6 +355,11 @@ const routes = [
         path: "/dashboard/products/:id",
         name: "Продукт",
         component: ShowcaseView,
+      },
+      {
+        path: "/dashboard/notifications",
+        name: "Уведомления",
+        component: Notification,
       },
     ],
   },

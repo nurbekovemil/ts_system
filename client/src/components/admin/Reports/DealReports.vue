@@ -1,6 +1,6 @@
 <template>
   <v-card elevation="1">
-    <v-row class="mt-2">
+    <v-row class="mt-2 ma-2">
       <v-col cols="12" md="2">
         <v-text-field
           v-model="date_from"
@@ -54,6 +54,10 @@
           <v-icon left>mdi-filter</v-icon>
           Применить</v-btn
         >
+        <v-btn elevation="0" color="#78C3CC" dark small @click="print">
+        <v-icon left>mdi-printer</v-icon>
+        Печать</v-btn
+      >
       </v-col>
     </v-row>
     <v-card-text>
@@ -132,11 +136,11 @@
       </div>
     </v-card-text>
     <v-card-actions>
-      <v-spacer />
+      <!-- <v-spacer />
       <v-btn elevation="0" color="#78C3CC" dark small @click="print">
         <v-icon left>mdi-printer</v-icon>
         Печать</v-btn
-      >
+      > -->
     </v-card-actions>
   </v-card>
 </template>

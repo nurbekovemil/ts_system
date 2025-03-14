@@ -15,6 +15,7 @@ import blog from "./blog-store";
 import tender from "./tender-store";
 import showcases from "./showcase-store";
 import passport from "./exchange-passport";
+import notification from "./notification";
 
 Vue.use(Vuex, axios);
 
@@ -33,5 +34,6 @@ export default new Vuex.Store({
     tender,
     passport,
     showcases,
+    notification
   },
 });

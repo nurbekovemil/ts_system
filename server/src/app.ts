@@ -52,6 +52,9 @@ import ExchangePassportHandlers from "./handlers/exchangepassport";
 import showcaseRouters from "./routers/showcase";
 import ShowcaseHandlers from "./handlers/showcase";
 
+import notificationRouters from "./routers/notification";
+import NotificationHandlers from "./handlers/notification";
+
 const appInstance = (app, opt, done) => {
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -107,6 +110,7 @@ const appInstance = (app, opt, done) => {
     "exchangePassportHandlers",
     new ExchangePassportHandlers(app.pg)
   );
+  app.decorate("notificationHandlers", new NotificationHandlers(app.pg));
   done();
 };
 
@@ -184,6 +188,9 @@ const buildApp = (opt: FastifyServerOptions) => {
   });
   app.register(exchangePassportRouters, {
     prefix: "/exchange",
+  });
+  app.register(notificationRouters, {
+    prefix: "/notifications",
   });
 
   app.register(fastifyStatic, {

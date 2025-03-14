@@ -248,6 +248,7 @@ class UserHandlers {
             select 
               u.id, 
               u.username,
+              u.info::json#>>'{0,items,1,value}' as user_company_name,
               to_char(u.last_visit, 'DD.MM.YYYY, HH24:MI:SS') as last_visit,
               r.role,
               r.title as role_title,

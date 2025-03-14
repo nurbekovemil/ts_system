@@ -19,11 +19,11 @@ export default {
         title: "Все сделки",
         icon: "mdi-handshake",
       },
-      transactions: {
-        count: null,
-        title: "Все переводы",
-        icon: "mdi-swap-horizontal",
-      },
+      // transactions: {
+      //   count: null,
+      //   title: "Все переводы",
+      //   icon: "mdi-swap-horizontal",
+      // },
     },
     in_processing_offers: [],
   },

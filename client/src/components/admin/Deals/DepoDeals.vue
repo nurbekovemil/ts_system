@@ -1,4 +1,5 @@
 <template>
+  <v-card>
   <v-row>
     <v-col cols="12" md="3">
       <v-select
@@ -88,6 +89,7 @@
       </p>
     </v-col>
   </v-row>
+</v-card>
 </template>
 <script>
 import { mapState, mapActions } from "vuex";

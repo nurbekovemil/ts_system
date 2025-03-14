@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-card>
     <v-tabs v-model="tab">
       <v-tab>Сделки</v-tab>
       <v-tab>Отчет по структуре комисс</v-tab>
@@ -16,7 +16,7 @@
         <commission-report-detail />
       </v-tab-item>
     </v-tabs-items>
-  </div>
+  </v-card>
 </template>
 
 <script>

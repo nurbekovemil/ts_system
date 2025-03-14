@@ -1,20 +1,23 @@
 <template lang="">
-	<div>
+	<v-card class="mt-5">
 		<v-row>
-			<v-col cols="12" md="3">
-<v-select
-        v-model="type"
-        :items="types"
-        menu-props="auto"
-        item-text="title"
-        item-value="type"
-        label="Тип заявки"
-        dense
-        outlined
-        hide-details
-      ></v-select>
-			</v-col>
-			<v-col cols="12" md="12">
+			<!-- <v-col cols="12" md="3">
+        <v-select
+          v-model="type"
+          :items="types"
+          menu-props="auto"
+          item-text="title"
+          item-value="type"
+          label="Тип заявки"
+          dense
+          outlined
+          hide-details
+        ></v-select>
+			</v-col> -->
+      <v-col cols="12" md="3">
+        <h3 class="ml-4">{{ type == 1 ? "Заявки на продажу" : "Заявки на покупку" }}</h3>
+      </v-col>
+		<v-col cols="12" md="12">
 		<v-simple-table>
 			<template v-slot:default>
 				<thead>
@@ -50,7 +53,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="d-flex flex-wrap d-md-table-row my-2 py-3" style="width:100%;border: 1px solid #E1E5E8; border-radius:10px;" v-for="(order, i) of order_list.rows" :key="i">
+          <template v-if="order_list.rows.length > 0">
+            <tr class="d-flex flex-wrap d-md-table-row my-2 py-3" style="width:100%;border: 1px solid #E1E5E8; border-radius:10px;" v-for="(order, i) of order_list.rows" :key="i">
 						<td style="flex: 0 1 100%;">
 							<v-btn
 								rounded
@@ -150,33 +154,40 @@
                 </v-menu>
 						</td>
 					</tr>
+          </template>
+          <template v-else>
+              <tr>  
+            <td colspan="10" class="text-center py-2 text--disabled">
+                  Пусто!
+              </td>
+            </tr>
+          </template>
 				</tbody>
 			</template>
 		</v-simple-table>
 			</v-col>
 			<v-col cols="12" md="12">
-<v-pagination
-				v-if="order_list.count > limit"
-        v-model="page"
-        :length="order_count"
-        color="#78C3CC"
-        app
-      ></v-pagination>
+        <v-pagination
+          v-if="order_list.count > limit"
+          v-model="page"
+          :length="order_count"
+          color="#78C3CC"
+          app
+        ></v-pagination>
 			</v-col>
 		</v-row>
-		
-	</div>
+	</v-card>
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
 export default {
-  props: ["status"],
+  props: ["status","type"],
   data: () => ({
-    type: 1,
-    types: [
-      { title: "Заявка на продажу", type: 1 },
-      { title: "Заявка на покупку", type: 2 },
-    ],
+    // type: 1,
+    // types: [
+    //   { title: "Заявка на продажу", type: 1 },
+    //   { title: "Заявка на покупку", type: 2 },
+    // ],
     page: 1,
     limit: 10,
   }),
@@ -225,9 +236,9 @@ export default {
     page(v) {
       this.ALL_ORDER_LIST({ page: v, limit: this.limit });
     },
-    type() {
-      this.getAllOrderList();
-    },
+    // type() {
+    //   this.getAllOrderList();
+    // },
   },
 };
 </script>

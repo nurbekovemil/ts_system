@@ -36,6 +36,7 @@ class ReportHandlers {
         }
         order by d.created_at desc
         `;
+        console.log('getDealReports querystring: ', queryString)
       const { rows } = await client.query(queryString);
       return rows;
     } catch (error) {
@@ -84,7 +85,7 @@ class ReportHandlers {
         }
       group by u.id
       `;
-      console.log(queryString)
+      console.log('getCommissionReport querystring: ',queryString)
       const { rows } = await client.query(queryString);
       return rows;
     } catch (error) {
@@ -128,7 +129,7 @@ class ReportHandlers {
         }
       group by u.id
       `;
-      console.log(queryString)
+      console.log('getCommissionReportDetail querystring: ',queryString)
       const { rows } = await client.query(queryString);
       return rows;
     } catch (error) {

@@ -62,7 +62,19 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>{{ menu.name }}</v-list-item-title>
+              <v-list-item-title>
+                {{ menu.name }}
+                <template v-if="menu.route == '/dashboard/notifications' && unreadCount > 0">
+                  <v-chip
+                      color="#c8eac9"
+                      :style="'color: green'"
+                      class="ml-2"
+                      x-small
+                      >
+                        {{ unreadCount }}
+                      </v-chip>
+                </template>
+              </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -87,6 +99,7 @@ export default {
   }),
   computed: {
     ...mapState("user", ["user", "userMenus"]),
+    ...mapState("notification", ["unreadCount"]),
   },
   methods: {
     ...mapActions("user", ["LOGOUT"]),

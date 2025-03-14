@@ -141,4 +141,12 @@ export default {
   getProdList: () => api.get("/showcase"),
   deleteProdById: (id) => api.delete("/showcase/" + id),
   deleteProdImage: (id) => api.put("/showcase/image", id),
+
+  // notifications
+  createNotification: (data) => api.post("/notifications", data),
+  updateNotification: (data) => api.put("/notifications", data),
+  getNotifications: () => api.get("/notifications"),
+  getNotificationById: (id) => api.get("/notifications/" + id),
+  getCountUnreadNotifications: () => api.get("/notifications/count"),
+  deleteNotification: (id) => api.delete("/notifications/" + id),
 };

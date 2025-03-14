@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-card>
     <template v-if="deals.length > 0">
       <v-simple-table>
         <thead>
@@ -117,7 +117,7 @@
         }}
       </p>
     </template>
-  </div>
+  </v-card>
 </template>
 <script>
 import { mapState, mapActions } from "vuex";

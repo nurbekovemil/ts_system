@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row class="mt-2">
+    <v-row class="mt-2 mx-2">
       <v-col cols="12" md="2">
         <v-text-field
           v-model="date_from"
@@ -82,9 +82,9 @@
             <thead>
               <tr class="brdr">
                 <th class="text-left">Участник торгов</th>
+                <th class="text-left">Число сделок</th>
                 <th class="text-left">Объем сделок</th>
                 <th class="text-left">Сумма комиссионных</th>
-                <th class="text-left">Число сделок</th>
               </tr>
             </thead>
             <tbody>
@@ -95,9 +95,9 @@
                   class="brdr"
                 >
                   <td>{{ report.username }}</td>
+                  <td>{{ report.deal_count }}</td>
                   <td>{{ validPrice(report.costs) }} сом</td>
                   <td>{{ validPrice(report.precent) }} сом</td>
-                  <td>{{ report.deal_count }}</td>
                 </tr>
                 <tr class="grey lighten-2">
                   <td colspan="1">
