@@ -21,12 +21,9 @@ export default {
   },
   mounted() {
     this.GET_ME()
-    this.GET_COUNT_UNREAD_NOTIFICATIONS()
   },
   methods: {
-    ...mapActions('user',['GET_ME']),
-    ...mapActions('notification',['GET_COUNT_UNREAD_NOTIFICATIONS']),
-  
+    ...mapActions('user',['GET_ME']),  
   }
 };
 </script>

@@ -101,8 +101,12 @@ export default {
     ...mapState("user", ["user", "userMenus"]),
     ...mapState("notification", ["unreadCount"]),
   },
+  mounted(){
+    this.GET_COUNT_UNREAD_NOTIFICATIONS()
+  },
   methods: {
     ...mapActions("user", ["LOGOUT"]),
+    ...mapActions('notification',['GET_COUNT_UNREAD_NOTIFICATIONS']),
     drawerHandler() {
       this.drawer = !this.drawer;
     },
